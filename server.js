@@ -16,11 +16,15 @@ const urlencoded = bodyParser.urlencoded({
 
 app.use(jsonParser)
 app.use(urlencoded)
+app.set('view engine', 'ejs')
+
+app.use('/assets', express.static('assets'))
 
 // System routes
 app.get('/',backdoorC.check)
 
 // User routes
+app.get('/users/create', usersC.registerPage)
 app.post('/users', usersC.register)
 app.post('/login', usersC.login)
 app.post('/logout', usersC.logout)

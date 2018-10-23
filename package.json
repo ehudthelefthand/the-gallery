@@ -10,9 +10,12 @@
   "author": "Pongneng and JJ",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
     "eslint": "^5.7.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.5",
     "nodemon": "^1.18.4"
   }

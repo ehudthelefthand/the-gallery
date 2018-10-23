@@ -40,6 +40,17 @@ Step
   - router
   - plugin
 - install mongoose    npm install mongoose
+- user model
+- user validator
+- user password hash and explain hashing
+  - bcrypt issue: https://github.com/kelektiv/node.bcrypt.js/issues/16
+- user login
+- explain cookie and token
+  - what is cookie? remembering! / http only
+  - what is cookie-session? pm2 different process can not remember cookie
+  - cookie then save to db 
+  - token is overload word could be either JWT or any string that represent user
+  - JWT === cookie but no need to check with db
 
 ==========================================
 
