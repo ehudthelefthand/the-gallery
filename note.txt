@@ -55,6 +55,10 @@ Step
 - using mongoose validator and pros/cons
 - list gallery by user
 - user middleware
+- image service
+- url encoding concern
+- config env
+- pm2
 ==========================================
 
 Last time teaching Content

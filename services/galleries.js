@@ -16,3 +16,11 @@ exports.byUserID = async (userId) => {
     throw e
   } 
 }
+
+exports.byID = async (galleryId) => {
+  try {
+    return await Gallery.findOne({ _id: galleryId })
+  } catch(e) {
+    throw e
+  } 
+}

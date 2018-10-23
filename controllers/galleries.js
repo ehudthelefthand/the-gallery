@@ -1,6 +1,7 @@
 const express = require('express')
+const mkdirp = require('mkdirp')
 
-module.exports = (galleryService) => {
+module.exports = (galleryService, imageService, multer) => {
   const createGallery = async (req, res) => {
     const gallery = {
       userId: req.user._id,
@@ -37,8 +38,46 @@ module.exports = (galleryService) => {
     }
   }
 
+  const uploadImage = async (req, res) => {
+    const galleryId = req.params['id']
+    if (!galleryId) {
+      res.status(400)
+      return res.json({
+        message: "gallery not found"
+      })
+    }
+    try {
+      const gallery = await galleryService.byID(galleryId)
+      if (!gallery) {
+        res.status(400)
+        return res.json({
+          message: "gallery not found"
+        })
+      }
+      const galleryDir = _createGalleryDir(gallery._id)
+      for (let file of req.files) {
+        imageService.create(file, galleryDir, gallery)
+      }
+      const updated = await gallery.save()
+      
+    } catch(e) {
+      res.status(500)
+      res.json({
+        message: e.toString()
+      })
+    }
+  }
+
+  const _createGalleryDir = (galleryId) => {
+    const path = `${process.cwd()}/uploads/${galleryId}`
+    mkdirp.sync(path)
+    return path
+  }
+
+  const upload = multer()
   const galleryRouter = express.Router()
   galleryRouter.post('/', createGallery)
   galleryRouter.get('/', getGalleryByUser)
+  galleryRouter.post('/:id/upload', upload.array('photos'), uploadImage)
   return galleryRouter
 }

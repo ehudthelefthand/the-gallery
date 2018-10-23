@@ -6,10 +6,11 @@ const userMw = require('./middlewares/users')
 const usersC = require('./controllers/users')
 const galleryC = require('./controllers/galleries')
 const backdoorC = require('./controllers/backdoor')
+const config = require('./configs')
 const port = 3000
 
 // Connect DB first!
-mongoose.connect('mongodb://localhost/gallery_local')
+mongoose.connect(config.mongo)
 
 const jsonParser = bodyParser.json()
 const urlencoded = bodyParser.urlencoded({
@@ -33,7 +34,9 @@ app.post('/logout', usersC.logout)
 
 // Gallery routes
 app.use('/galleries', userMw.requireUser, galleryC(
-  require('./services/galleries')
+  require('./services/galleries'),
+  require('./services/images'),
+  require('multer')
 ))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
