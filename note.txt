@@ -51,7 +51,9 @@ Step
   - cookie then save to db 
   - token is overload word could be either JWT or any string that represent user
   - JWT === cookie but no need to check with db
-
+- create gallery
+- using mongoose validator and pros/cons
+- user middleware
 ==========================================
 
 Last time teaching Content

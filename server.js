@@ -3,6 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const usersC = require('./controllers/users')
+const galleryC = require('./controllers/galleries')
 const backdoorC = require('./controllers/backdoor')
 const port = 3000
 
@@ -24,9 +25,11 @@ app.use('/assets', express.static('assets'))
 app.get('/',backdoorC.check)
 
 // User routes
-app.get('/users/create', usersC.registerPage)
 app.post('/users', usersC.register)
 app.post('/login', usersC.login)
 app.post('/logout', usersC.logout)
+
+// Gallery routes
+app.post('/galleries', galleryC.createGallery)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
