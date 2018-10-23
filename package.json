@@ -4,14 +4,16 @@
   "description": "Just a simple gallery",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "./node_modules/.bin/nodemon server.js",
     "lint": "eslint server.js"
   },
   "author": "Pongneng and JJ",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "eslint": "^5.7.0",
     "express": "^4.16.4",
-    "mongoose": "^5.3.5"
+    "mongoose": "^5.3.5",
+    "nodemon": "^1.18.4"
   }
 }
