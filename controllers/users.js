@@ -28,6 +28,7 @@ exports.login = async (req, res) => {
 
   try {
     const token = await UserService.login(user)
+    exports._setCookie(res, token)
     res.json({
       token: token
     })
@@ -40,5 +41,9 @@ exports.login = async (req, res) => {
 }
 
 exports.logout = (req, res) => {
-  res.send('logout') 
+  res.send('logout')
+}
+
+exports._setCookie = (res, token) => {
+  res.cookie('remeber_token', token)
 }

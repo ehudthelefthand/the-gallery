@@ -1,6 +1,9 @@
 const User = require('../models/users')
 const bcrypt = require('bcrypt')
-const saltRounds = 10;
+const jwt = require('jsonwebtoken')
+
+const saltRounds = 10
+const signKey = 'secret-sign-key' // must be config in production
 
 const runValidators = async (user, ...valFns) => {
   for (let fn of valFns) {
@@ -69,12 +72,15 @@ exports.login = async (data) => {
     if (!valid) {
       throw new Error('wrong credential')
     }
-    return 'token'
+    return exports._getToken(found)
   } catch(e) {
     throw e
   }
 }
 
 exports._getToken = (user) => {
-  
+  return jwt.sign({
+    _id: user._id,
+    email: user.email
+  }, signKey)
 }
