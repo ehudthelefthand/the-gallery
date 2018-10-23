@@ -39,7 +39,7 @@ Step
   - connect middleware / request life cycle
   - router
   - plugin
-- 
+- install mongoose    npm install mongoose
 
 ==========================================
 
