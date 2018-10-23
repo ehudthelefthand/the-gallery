@@ -1,0 +1,52 @@
+Prerequisite
+- Node https://nodejs.org/en/download/
+- MongoDB https://docs.mongodb.com/manual/installation/
+
+Development Lib
+- express
+- mongoose
+- nodemon
+
+Content
+- Middleware
+- Express router
+- Express Request
+- REST
+- Persistence
+- MongoDB
+- Mongoose
+- CRUD operation
+- Cookie / JWT
+- Config Environment
+- Application Logging
+
+Feature
+- User
+- Gallery
+- Photo
+
+Agreement
+- ES6 (Async/Await)
+- NPM
+- ESLint
+
+Step
+- init project
+- install eslint    npm install eslint
+- init eslint   ./node_modules/.bin/eslint --init
+- 
+
+==========================================
+
+Last time teaching Content
+install express
+application structure
+connect middleware concept
+express routing
+handling content using body-parser
+handling cookie and session
+connect to mongo (via mongoose)
+error handling
+testing api using supertest
+multiple env management
+pm2

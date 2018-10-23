@@ -1,0 +1,15 @@
+{
+  "name": "the-gallery",
+  "version": "1.0.0",
+  "description": "Just a simple gallery",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint server.js"
+  },
+  "author": "Pongneng and JJ",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^5.7.0"
+  }
+}
