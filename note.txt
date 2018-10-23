@@ -35,6 +35,11 @@ Step
 - install eslint    npm install eslint
 - init eslint   ./node_modules/.bin/eslint --init
 - install express
+- explain express framework
+  - connect middleware / request life cycle
+  - router
+  - plugin
+- 
 
 ==========================================
 
