@@ -41,7 +41,8 @@ exports.login = async (req, res) => {
 }
 
 exports.logout = (req, res) => {
-  res.send('logout')
+  res.clearCookie('remeber_token')
+  res.send()
 }
 
 exports._setCookie = (res, token) => {
