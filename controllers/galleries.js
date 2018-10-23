@@ -10,7 +10,7 @@ module.exports = (galleryService, imageService, multer) => {
   
     try {
       const created = await galleryService.create(gallery)
-      return res.json(created)
+      return res.json(_imageURL(created))
     } catch(e) {
       res.status(500)
       res.json({
@@ -28,7 +28,8 @@ module.exports = (galleryService, imageService, multer) => {
           message: "user not found"
         })
       }
-      const galleries = await galleryService.byUserID(userId)
+      let galleries = await galleryService.byUserID(userId)
+      galleries = galleries.map(g => _imageURL(g))
       return res.json(galleries)
     } catch(e) {
       res.status(500)
@@ -59,7 +60,7 @@ module.exports = (galleryService, imageService, multer) => {
         imageService.create(file, galleryDir, gallery)
       }
       const updated = await gallery.save()
-      return res.json(updated)
+      res.json(_imageURL(updated))
     } catch(e) {
       res.status(500)
       res.json({
@@ -72,6 +73,15 @@ module.exports = (galleryService, imageService, multer) => {
     const path = `${process.cwd()}/uploads/${galleryId}`
     mkdirp.sync(path)
     return path
+  }
+
+  const _imageURL = (gallery) => {
+    const json = gallery.toJSON()
+    json.images.forEach((m) => {
+      m.url = `/uploads/${json._id}/${m.filename}`
+      return m
+    })
+    return json
   }
 
   const upload = multer()

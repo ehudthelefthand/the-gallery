@@ -21,7 +21,7 @@ app.use(jsonParser)
 app.use(urlencoded)
 app.set('view engine', 'ejs')
 
-app.use('/assets', express.static('assets'))
+app.use('/uploads', express.static('uploads'))
 app.use(userMw.setUser)
 
 // System routes
