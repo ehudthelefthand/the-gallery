@@ -31,5 +31,6 @@ app.post('/logout', usersC.logout)
 
 // Gallery routes
 app.post('/galleries', galleryC.createGallery)
+app.get('/users/:userId/galleries', galleryC.getGalleryByUser)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
