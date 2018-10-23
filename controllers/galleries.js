@@ -59,7 +59,7 @@ module.exports = (galleryService, imageService, multer) => {
         imageService.create(file, galleryDir, gallery)
       }
       const updated = await gallery.save()
-      
+      return res.json(updated)
     } catch(e) {
       res.status(500)
       res.json({
