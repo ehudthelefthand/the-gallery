@@ -53,6 +53,7 @@ Step
   - JWT === cookie but no need to check with db
 - create gallery
 - using mongoose validator and pros/cons
+- list gallery by user
 - user middleware
 ==========================================
 

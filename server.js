@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const userMw = require('./middlewares/users')
 const usersC = require('./controllers/users')
 const galleryC = require('./controllers/galleries')
 const backdoorC = require('./controllers/backdoor')
@@ -20,9 +21,10 @@ app.use(urlencoded)
 app.set('view engine', 'ejs')
 
 app.use('/assets', express.static('assets'))
+app.use(userMw.setUser)
 
 // System routes
-app.get('/',backdoorC.check)
+app.get('/', backdoorC.check)
 
 // User routes
 app.post('/users', usersC.register)
@@ -30,7 +32,8 @@ app.post('/login', usersC.login)
 app.post('/logout', usersC.logout)
 
 // Gallery routes
-app.post('/galleries', galleryC.createGallery)
-app.get('/users/:userId/galleries', galleryC.getGalleryByUser)
+app.use('/galleries', userMw.requireUser, galleryC(
+  require('./services/galleries')
+))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

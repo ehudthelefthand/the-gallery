@@ -84,3 +84,6 @@ exports._getToken = (user) => {
     email: user.email
   }, signKey)
 }
+
+module.exports.signKey = signKey
+
