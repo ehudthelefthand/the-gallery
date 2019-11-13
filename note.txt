@@ -16,7 +16,7 @@ Content
 - MongoDB
 - Mongoose
 - CRUD operation
-- Cookie / JWT
+- Session / JWT
 - Config Environment
 - Application Logging
 
