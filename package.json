@@ -11,7 +11,7 @@
   "author": "Pongneng and JJ",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "eslint": "^5.7.0",
